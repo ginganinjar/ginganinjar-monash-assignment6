@@ -13,43 +13,64 @@
     <!-- Custom stylesheet -->
     <link rel="stylesheet" href="assets/css/style.css">
   
+       <!-- Fontastic  -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integ rity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
    
 
   <title>Weather Forecaster</title>
 </head>
 
 <body>
-  <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+  <container class="fluid">
+  <nav class="navbar navbar-light moveDownOne">
    Weather Forecaster
   </nav>
  
-  <row>
-    <div class="col-sm-2">
-        <div class="col-sm-10">
-          <div class="row">
-              <div class="col-sm-2">
+<div class="row">
+<div class="col-sm-4">
 
-              </div>
-              <div class="col-sm-2">
+<div class="embraceSearch">
+  <div class="active-pink-3 active-pink-4 mb-4">
+    <input class="form-control reduceSpanOfSearch leanlefticals" id="findThisPlace" type="text" placeholder="Search" aria-label="Search">
+    <i class="fas fa-search  searchIcon"></i>
+  </div>
 
-
-              </div>
-
-              <div class="col-sm-2">
+  <div id="theMapSRC"></div>
 
 
-              </div>
-                <div class="col-sm-2">
+</div>
 
-                </div>
 
-                <div class="col-sm-2">
+<div id="theResults"></div>
 
-                </div>
-          </div>
-        </div>
+
+</div>
+<div class="col-sm-8">
+
+<div class="row">
+<div class="sm-col-2">
+weather 1
+</div>
+<div class="sm-col-2">
+  weather 2
+  </div>
+  <div class="sm-col-2">
+    weather 3
     </div>
-  </row>
+    <div class="sm-col-2">
+      weather 4
+      </div>
+      <div class="sm-col-2">
+        weather 5
+        </div>
+
+</div>
+</div>
+
+</div>
+</container>
 
   <!-- jQuery & Bootstrap CDN -->
 

@@ -1,0 +1,45 @@
+.backgroundColors {
+background-color: #f4976b;
+background-color:#b5dfe5;
+background-color:#d2fdfe;
+background-color:#f9f9f9;
+background-color : #fae8a6;
+}
+body {
+padding : 1%;
+background-color : #fae8a6;
+}
+
+.moveDownOne {
+margin-bottom : 1%;
+background-color :  #303c6c;
+color : #fff;
+}
+
+.embraceSearch {
+padding : 1%;
+border-style: groove;
+background-color : #f4976b;
+
+}
+
+.leanlefticals {
+float:left;
+overflow-x: scroll;
+white-space: nowrap;
+}
+
+.reduceSpanOfSearch {
+    width : 77%;
+    border-radius: 15px;
+}
+
+.searchIcon {
+    font-size: xxx-large;
+    margin-left: 1%;
+    margin-top : 1%;
+    padding : 0%;
+    cursor: pointer;
+    display: inline-block;
+}
+
