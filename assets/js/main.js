@@ -18,6 +18,7 @@ $(document).ready(function () {
 	function getGeoLocal(searchHere) {
 			
 	console.log("Im searching ofr this" + 	searchHere);
+		$("#imageDiv").remove();
 
 		$.ajax({
             "url": "http://www.mapquestapi.com/geocoding/v1/address?key=6X1OoAA3I2lIVopuMM6Mp8RzTE8Ig9sq&location=" + encodeURIComponent(searchHere),
@@ -41,7 +42,9 @@ $(document).ready(function () {
          
 
 	function getCities(referrerVar) {
-        $.ajax({
+	
+		
+		$.ajax({
             "async": true,
             "crossDomain": true,
             "url": "https://geo-services-by-mvpc-com.p.rapidapi.com/cities/findcitiesfromtext?252Cdesc&language=en&q=" + referrerVar,
@@ -51,6 +54,7 @@ $(document).ready(function () {
                 "x-rapidapi-key": "1730421ec2msh67099de7682ba92p1680b6jsnbe83668d17c8"
 			},
 			"success": function(response){
+				$(".list-group-item").remove();
 			console.log(response);
 			var x = parseInt(response.count);
 			for (i = 0; i < x; i ++) {
@@ -62,6 +66,7 @@ $(document).ready(function () {
 					newListing.attr("style", "cursor:pointer");
 					newListing.text(theCityName + " ," + theCountry);
 					newListing.on("click",function() {
+					
 						getGeoLocal(this.innerHTML);
 					})
 					$("#foundCountries").append(newListing);
