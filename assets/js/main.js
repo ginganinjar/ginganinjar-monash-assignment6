@@ -1,4 +1,5 @@
 
+$(document).ready(function () {
 
 // function for api call for weather
 // https://openweathermap.org/api/one-call-api
@@ -36,6 +37,10 @@ function getGeoLocal(searchHere) {
 		$("#imageDiv").attr({"width" : "99%"})
 	});
 	}
-	
-	getGeoLocal("victoria australia");
 
+
+	getGeoLocal("victoria australia");
+	
+
+
+});	
