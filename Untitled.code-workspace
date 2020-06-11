@@ -1,13 +1,14 @@
 {
 	"folders": [
 		{
-			"path": "."
+			"path": "../../personal_project_work/clouds"
 		},
 		{
-			"path": "../Weather-Dashboard"
+			"path": "."
 		}
 	],
 	"settings": {
+		"liveServer.settings.port": 5501,
 		"liveServer.settings.multiRootWorkspaceName": "ginganinjar-monash-assignment6"
 	}
 }
