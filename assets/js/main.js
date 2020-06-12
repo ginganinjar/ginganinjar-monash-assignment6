@@ -6,6 +6,81 @@ var sendRequest;
 
 $(document).ready(function () {
 
+	// create function for rountine class/div cleanup
+
+	function cleanUp() {
+	
+		$("#searchTitle").val("");
+		$("#imageDiv").remove();
+		$(".infoBox").remove();
+
+	}
+
+	function accessStorage(toDo,dataID) {
+		var getStorage = localStorage["weatherData"];
+	
+		// if getStorageInfo is not empty then parse json otherwise set as empty array
+		 var results = getStorage ? JSON.parse(getStorage) : [];
+
+		 if (toDo === "load") {
+			console.log("requesting load data");
+
+			// sort array based on best scores
+			var theArray = results.slice(0);
+			var x = 0;
+
+			if (theArray.length > 0) {
+				theArray.forEach((text) => {
+					x++;
+					var searchResult = text.search;
+					console.log("previous search " + searchResult);
+					var newListing = $("<li>");
+					newListing.attr("class", "list-group-item infoBox");
+					newListing.attr("style", "cursor:pointer");
+					newListing.attr("id","searchBar" + x);
+					newListing.text(text.search.toUpperCase());
+					newListing.on("click",function(event) {
+						
+						cleanUp();
+						accessStorage("save",this.innerHTML);	
+						getGeoLocal(this.innerHTML);
+						event.stopPropagation();
+
+					})
+						$("#foundCountries").append(newListing);
+					
+						
+	
+
+				});
+			}
+		 }
+
+
+		if (toDo === "save") {
+			
+			// get object array of matches to the existing search
+			objIndex = results.findIndex((obj => obj.search == dataID.toUpperCase()));
+
+			if (objIndex !== -1) {
+				//Log object to Console.
+				console.log("Before update: ", results[objIndex])
+		
+				//Update object's theText property to avoid duplication.
+		
+				results[objIndex].search = dataID;
+			  } else {
+				results.push({
+				  search: dataID.toUpperCase()
+				});
+			  }
+		localStorage["weatherData"] = JSON.stringify(results);
+		
+	}
+
+}
+
+
 	function makeInfoBox(thisID) {
 			var iD = thisID;
 			thisID = "w" + thisID;	
@@ -72,6 +147,10 @@ console.log("the description I have is " + description);
 								theClass = "thunder"
 									};	
 
+									if  (description === "Fog") {
+										theClass = "fog"
+											};	
+		
 
 	if (theClass !== undefined) {
 		$(theID).attr("class","card infoBox " + theClass);
@@ -143,15 +222,28 @@ console.log("the description I have is " + description);
 
 	function getGeoLocal(searchHere) {
 			
-	console.log("Im searching ofr this" + 	searchHere);
-		$("#imageDiv").remove();
-		$(".infoBox").remove();
+	console.log("Im searching of this" + 	searchHere);
+	
+	// tidy up as this is a new search
+	cleanUp();
+
 
 		$.ajax({
             "url": "http://www.mapquestapi.com/geocoding/v1/address?key=6X1OoAA3I2lIVopuMM6Mp8RzTE8Ig9sq&location=" + encodeURIComponent(searchHere),
 			"method": "GET",
 			"success": function(response){
+				console.log("Dumping getGeoLocal results");
 				console.log(response);
+				console.log("--END ---")
+				
+				if (response.count === 0)
+				{
+					console.log("error, no results found - returning");
+					return;
+				}
+
+				// save this search because we know it is good.
+				accessStorage("save", searchHere);
 				var thisLat = response.results[0].locations[0].latLng.lat;
 				var thisLng = response.results[0].locations[0].latLng.lng;
 				console.log("lat: " + thisLat + " lng:" + thisLng);
@@ -195,7 +287,8 @@ console.log("the description I have is " + description);
 					newListing.attr("style", "cursor:pointer");
 					newListing.text(theCityName + " ," + theCountry);
 					newListing.on("click",function() {
-					
+						// save this record to storage
+						accessStorage("save",this.innerHTML);	
 						getGeoLocal(this.innerHTML);
 					})
 					$("#foundCountries").append(newListing);
@@ -204,9 +297,24 @@ console.log("the description I have is " + description);
         });
     };
    
-	$("#searchTitle").on("keypress", function() {
+				accessStorage("load",null);
+
+			$("#searchTitle").on("click",function(){
+			cleanUp();
+		accessStorage("load",null);
+	})
+
+	$("#searchTitle").on("keypress", function(e) {
 	
+
 		clearTimeout(sendRequest);
+
+			if (e.which == 13) {
+				// save this information to local storage
+					console.log("executing 13");
+					getGeoLocal($("#searchTitle").val());
+					cleanUp();
+			}
 
 			// introduced the timeout to stop multiple requests from flooding the api server
 			// and because i could not get the auto complete function to work.
@@ -216,6 +324,7 @@ console.log("the description I have is " + description);
 				if (theSearch.length > 3) {
 					getCities(theSearch);
 				}
+			
 		
 		}, 1500);
 	
