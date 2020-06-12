@@ -49,20 +49,21 @@ white-space: nowrap;
 
 @keyframes animatedBackground {
   from {
-    background-position: -275px 0;
+    background-position: -1050px 0;
   }
   to {
-    background-position: 275px 0;
+    background-position: 1050px 0;
   }
 }
-#clouds {
+.clouds {
 
   background-image : url("../imgs/cloud.png");
-  background-position: -200px 0px;
+  background-position: -100px 0px;
   background-repeat: no-repeat;
   animation-direction : normal;
   animation: animatedBackground 15s linear infinite;
-   background-size: 100% 40%;
+   background-size: 100% 100%;
+   overflow:hidden;
    /* padding-top : 25%; */
 }
 
@@ -74,13 +75,13 @@ white-space: nowrap;
     background-position: 0 275px;
   }
 }
-#rain {
+.rain {
 
   background-image : url("../imgs/rain.png");
   background-position: -200px 0px;
   background-repeat: repeat-y; 
   animation-direction : normal;
-  animation: animatedBackgroundRain 15s linear infinite;
+  animation: animatedBackgroundRain 7s linear infinite;
    background-size: 100% 100%;
    /* padding-top : 25%; */
 }
@@ -94,7 +95,7 @@ white-space: nowrap;
     background-position: 275px 0;
   }
 }
-#sunshine {
+.sunshine {
 
   background-image: url(../imgs/sun.png);
   background-position: -200px 0px;
@@ -106,7 +107,26 @@ white-space: nowrap;
 
 
 
-#wind {
+@keyframes animatedBackgroundThunder {
+  from {
+    background-position: -105px 0;
+  }
+  to {
+    background-position: 275px 0;
+  }
+}
+.thunder {
+
+  background-image: url(../imgs/thunder.png);
+  background-position: -200px 0px;
+  background-repeat: NO-REPEAT;
+  animation-direction: normal;
+  animation: animatedBackgroundThunder 20s linear infinite;
+  background-size: 50% 50%;
+}
+
+
+.wind {
    background-image: url(../imgs/wind.png);
    background-position: -200px 0px;
    background-repeat: NO-REPEAT;
@@ -136,4 +156,12 @@ white-space: nowrap;
     background-size: 140% 20%;
   }
 
+}
+
+ /* used to delete top info box */
+.infoBox {
+}
+
+.zeroMargin {
+  margin-left : 0;
 }
