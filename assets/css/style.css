@@ -1,3 +1,5 @@
+
+
 .backgroundColors {
 background-color: #f4976b;
 background-color:#b5dfe5;
@@ -43,3 +45,23 @@ white-space: nowrap;
     display: inline-block;
 }
 
+
+
+@keyframes animatedBackground {
+  from {
+    background-position: -275px 0;
+  }
+  to {
+    background-position: 275px 0;
+  }
+}
+#clouds {
+
+  background-image: url("./cloud.png"); /* The image used */
+  background-position: -200px 0px;
+  background-repeat: repeat-y; 
+  animation-direction : forward;
+  animation: animatedBackground 15s linear infinite;
+   background-size: 100% 100%;
+   /* padding-top : 25%; */
+}
