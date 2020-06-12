@@ -57,11 +57,69 @@ white-space: nowrap;
 }
 #clouds {
 
-  background-image: url("./cloud.png"); /* The image used */
+  background-image : url("../imgs/cloud.png");
   background-position: -200px 0px;
   background-repeat: repeat-y; 
-  animation-direction : forward;
+  animation-direction : normal;
   animation: animatedBackground 15s linear infinite;
    background-size: 100% 100%;
    /* padding-top : 25%; */
+}
+
+@keyframes animatedBackgroundRain {
+  from {
+    background-position: 0 -275px;
+  }
+  to {
+    background-position: 0 275px;
+  }
+}
+#rain {
+
+  background-image : url("../imgs/rain.png");
+  background-position: -200px 0px;
+  background-repeat: repeat-y; 
+  animation-direction : normal;
+  animation: animatedBackgroundRain 15s linear infinite;
+   background-size: 100% 100%;
+   /* padding-top : 25%; */
+}
+
+
+@keyframes animatedBackgroundSun {
+  from {
+    background-position: -275px 0;
+  }
+  to {
+    background-position: 275px 0;
+  }
+}
+#sunshine {
+
+  background-image: url(../imgs/sun.png);
+  background-position: -200px 0px;
+  background-repeat: NO-REPEAT;
+  animation-direction: normal;
+  animation: animatedBackgroundSun 20s linear infinite;
+  background-size: 50% 50%;
+}
+
+
+@keyframes animatedBackgroundWind {
+  from {
+    background-position: -275px 0;
+  }
+  to {
+    background-position: 275px 0;
+  }
+}
+#wind {
+
+  background-image: url(../imgs/wind.png);
+  background-position: -200px 0px;
+  background-repeat: NO-REPEAT;
+  animation-direction: normal;
+  animation: animatedBackgroundWind 20s linear infinite;
+  background-size: 50% 50%;
+  /* padding-top: 25%;
 }
