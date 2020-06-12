@@ -7,17 +7,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <!-- Boostrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <!-- Boostrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
-    <!-- Custom stylesheet -->
-    <link rel="stylesheet" href="assets/css/style.css">
-  
-       <!-- Fontastic  -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-    integ rity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+  <!-- Custom stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- Fontastic  -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integ
+    rity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
   <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
-   
+
 
   <title>Weather Forecaster</title>
 </head>
@@ -25,68 +25,69 @@
 <body>
 
   <nav class="navbar navbar-light moveDownOne">
-   Weather Forecaster
+    Weather Forecaster
   </nav>
- 
-<div class="row">
-<div class="col-sm-3">
 
-  
+  <div class="row">
+    <div class="col-sm-3">
 
-<div class="embraceSearch">
-  <div class="active-pink-3 active-pink-4 mb-4">
-    <input class="form-control reduceSpanOfSearch leanlefticals" id="searchTitle" type="text" placeholder="Enter city/region and hit enter" aria-label="Search">
- 
+
+
+      <div class="embraceSearch">
+        <div class="active-pink-3 active-pink-4 mb-4">
+          <input class="form-control reduceSpanOfSearch leanlefticals" id="searchTitle" type="text"
+            placeholder="Enter city/region and hit enter" aria-label="Search">
+
+        </div>
+        <br>
+
+        <ul class="list-group" id="foundCountries">
+
+        </ul>
+
+
+        <div id="theMapSRC"></div>
+
+
+      </div>
+
+
+      <div id="theResults"></div>
+
+
+    </div>
+    <div class="col-sm-9">
+
+      <div id="w0">
+        <!-- The location for the weather information to be provided about TODAY -->
+      </div>
+
+
+      <div class="row zeroMargin">
+        <div class="sm-col-2">
+          <div id="w1"></div>
+        </div>
+
+        <div class="sm-col-2">
+          <div id="w2"></div>
+        </div>
+
+        <div class="sm-col-2">
+          <div id="w3"></div>
+        </div>
+
+        <div class="sm-col-2">
+          <div id="w4"></div>
+        </div>
+
+        <div class="sm-col-2">
+          <div id="w5"></div>
+        </div>
+
+      </div>
+    </div>
+
   </div>
-<br>
-
-  <ul class="list-group" id="foundCountries">
-  
-  </ul>
-
-
-  <div id="theMapSRC"></div>
-
-
-</div>
-
-
-<div id="theResults"></div>
-
-
-</div>
-<div class="col-sm-9">
-  
-  <div id="w0">
-  <!-- The location for the weather information to be provided about TODAY -->
-  </div>
-
-
-<div class="row zeroMargin">
-<div class="sm-col-2">
-  <div id="w1"></div>
-  </div>
-
-<div class="sm-col-2">
-  <div id="w2"></div>
-  </div>
-
-  <div class="sm-col-2">
-    <div id="w3"></div>
-  </div>
-  
-  <div class="sm-col-2">
-    <div id="w4"></div>
-  </div>
-
-  <div class="sm-col-2">
-    <div id="w5"></div>  
-  </div>
-
-</div>
-</div>
-
-</div>
 
 
   <!-- jQuery & Bootstrap CDN -->
@@ -95,9 +96,9 @@
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  <script src="assets/js/main.js"></script>
-  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="assets/js/main.js"></script>
+
 
 </html>
