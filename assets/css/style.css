@@ -59,10 +59,10 @@ white-space: nowrap;
 
   background-image : url("../imgs/cloud.png");
   background-position: -200px 0px;
-  background-repeat: repeat-y; 
+  background-repeat: no-repeat;
   animation-direction : normal;
   animation: animatedBackground 15s linear infinite;
-   background-size: 100% 100%;
+   background-size: 100% 40%;
    /* padding-top : 25%; */
 }
 
@@ -88,7 +88,7 @@ white-space: nowrap;
 
 @keyframes animatedBackgroundSun {
   from {
-    background-position: -275px 0;
+    background-position: -105px 0;
   }
   to {
     background-position: 275px 0;
@@ -105,21 +105,35 @@ white-space: nowrap;
 }
 
 
-@keyframes animatedBackgroundWind {
-  from {
-    background-position: -275px 0;
-  }
-  to {
-    background-position: 275px 0;
-  }
-}
-#wind {
 
-  background-image: url(../imgs/wind.png);
-  background-position: -200px 0px;
-  background-repeat: NO-REPEAT;
-  animation-direction: normal;
-  animation: animatedBackgroundWind 20s linear infinite;
-  background-size: 50% 50%;
-  /* padding-top: 25%;
+#wind {
+   background-image: url(../imgs/wind.png);
+   background-position: -200px 0px;
+   background-repeat: NO-REPEAT;
+   animation-direction: normal;
+   animation: up 3s linear infinite;
+   background-size: 80% 80%;
+}
+
+
+@keyframes up {
+  0%   { background-position: 275px 0;
+    background-size: 80% 80%;
+  }
+  25%  { background-position: 75px 50;
+    background-size: 100% 100%;
+  }
+  50%  { background-position: 200px -20;
+    background-size: 40% 40%;
+  }
+ 
+
+
+  80% {background-position: -115px 0;
+    background-size: 120% 120%;
+  }
+  100% {background-position: -175px 0;
+    background-size: 140% 20%;
+  }
+
 }

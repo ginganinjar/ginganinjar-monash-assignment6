@@ -5,13 +5,38 @@ var response;
 $(document).ready(function () {
 
 	function getTheResults(lat,long) {
+		console.log("fetching the weather results");
 		var settings = {
-			"url": "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + long + "&appid=a4a1ce235661b8ab1818d50cbde9b7a3",
+			"url": "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + long + "&units=metric&appid=a4a1ce235661b8ab1818d50cbde9b7a3",
 			"method": "GET"
 			}
 		
 		$.ajax(settings).done(function (response) {
 			console.log(response);
+			var daystotal = response.daily;
+			console.log(daystotal);
+			var totalNumber = parseInt(daystotal.length);
+				console.log(totalNumber);
+			
+				var currentTemp = response.current.temp;
+				var currentHunidity = response.current.humidity;
+				var currentDescription = response.current.weather[0].description;
+
+				for (x=0; x < totalNumber; x ++) {
+				var dateTime = new Date(response.daily[x].dt * 1000);
+				var workedTime = dateTime.toString().substr(0,15);;
+					
+					
+						
+						var minTemp = response.daily[x].temp.min;
+						var  maxTemp = response.daily[x].temp.max;
+					
+
+						console.log("Min: " + minTemp + " Max: " + maxTemp + " current temp " + currentTemp)	;
+						console.log(workedTime);
+						//var date = new Date(UNIX_Timestamp * 1000);
+
+			}
 		});
 		}
 
@@ -36,6 +61,9 @@ $(document).ready(function () {
 				img.id = "imageDiv"
 				$("#theMapSRC").append(img);
 				$("#imageDiv").attr({"width" : "99%"})
+				 getTheResults(thisLat,thisLng);
+			
+
 				}
 			});
 		}
