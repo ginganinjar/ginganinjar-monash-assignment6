@@ -208,25 +208,20 @@ $(document).ready(function () {
 				$("#theTitlew0").append($addImg);	
 
 			$("#peeTextw0").append("Current temp : " + Math.round(parseInt(response.current.temp)) + " °C <BR>");
-
-			$("#peeTextw0").append("Todays Top : " + Math.round(parseInt(response.current.temp)) + " °C <BR>");
-		
+			$("#peeTextw0").append("Todays Top : " + Math.round(parseInt(response.current.temp)) + " °C <BR>");	
 			$("#peeTextw0").append("Feels Like: " + Math.round(parseInt(response.current.feels_like)) + " °C <BR>");
 			$("#peeTextw0").append("Humidity: " + response.current.humidity + " <BR>");
 			$("#peeTextw0").append("Description: " + response.current.weather[0].description + " <BR>");
 			$("#peeTextw0").append("Wind Speed: " + response.current.wind_speed + " <BR>");
-			//$("#peeTextw0").append("UV: " + response.current.uvi + " <BR>");
-		
-		
-		
+
 
 			// get the pure uv score for image information
 			let theUVScore = response.current.uvi;
 
 			// lets see what the UV score is and provide info accordingly.
-			if (theUVScore < 3) { theUVpath = "./assets/imgs/UV-Index-1.png"; }
-			if ((theUVScore > 2) && (theUVScore < 8)) { theUVpath = "./assets/imgs/UV-Index-2.png"; }
-			if (theUVScore > 7) { theUVpath = "./assets/imgs/UV-Index-3.png"; }
+			if (theUVScore < 3) { theColor = "green"; theUVpath = "./assets/imgs/UV-Index-1.png"; }
+			if ((theUVScore > 2) && (theUVScore < 8)) { theColor = "orange"; theUVpath = "./assets/imgs/UV-Index-2.png"; }
+			if (theUVScore > 7) { theColor = "red"; theUVpath = "./assets/imgs/UV-Index-3.png"; }
 
 			console.log("appending UV Image");
 			let theUVIMG = $("<img>");
@@ -248,6 +243,7 @@ $(document).ready(function () {
 			uvScore.text("UV Score :" + response.current.uvi);
 			uvScore.css("text-decoration", "underline");
 			uvScore.css("cursor", "pointer");	
+			uvScore.css("color",theColor);
 			uvScore.on("mouseover",function() {
 				$("#theUVIMG").css("display","block");
 			})
@@ -273,9 +269,6 @@ $(document).ready(function () {
 			
 				$("#peeTextw" + x).append("UV Score : " + response.daily[x].uvi)
 
-	
-
-
 				var theIcon = response.daily[x].weather[0].icon;
 				var searchStringImg = "http://openweathermap.org/img/wn/" + response.daily[x].weather[0].icon + "@2x.png";
 				console.log(searchStringImg);
@@ -283,8 +276,6 @@ $(document).ready(function () {
 					$addImg.attr("src",searchStringImg);
 					$addImg.attr("css","float:right");
 					$("#theTitlew" + (x)).append($addImg);	
-				
-
 
 				searchThis("#bodyCardw" + x, response.daily[x].weather[0].main);
 				console.log(workedTime);
