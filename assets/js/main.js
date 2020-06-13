@@ -215,7 +215,8 @@ $(document).ready(function () {
 			$("#peeTextw0").append("Humidity: " + response.current.humidity + " <BR>");
 			$("#peeTextw0").append("Description: " + response.current.weather[0].description + " <BR>");
 			$("#peeTextw0").append("Wind Speed: " + response.current.wind_speed + " <BR>");
-			$("#peeTextw0").append("UV: " + response.current.uvi + " <BR>");
+			//$("#peeTextw0").append("UV: " + response.current.uvi + " <BR>");
+		
 		
 		
 
@@ -230,8 +231,9 @@ $(document).ready(function () {
 			console.log("appending UV Image");
 			let theUVIMG = $("<img>");
 			theUVIMG.attr("src", theUVpath);
+			theUVIMG.attr("id","theUVIMG");
 			theUVIMG.attr("class", "uv");
-			theUVIMG.attr("style", "cursor:pointer;width:200px;height:220px;margin-left: 60%;");
+			theUVIMG.attr("style", "cursor:pointer;width:200px;height:205px;margin-left:60%;display:none;");
 			theUVIMG.attr("title", "View more information about UV risks and dangers");
 
 			theUVIMG.on("click",function(){
@@ -241,6 +243,20 @@ $(document).ready(function () {
 			})
 
 			$("#cardBodyw0").append(theUVIMG);
+
+			var uvScore = $("<div>");
+			uvScore.text("UV Score :" + response.current.uvi);
+			uvScore.css("text-decoration", "underline");
+			uvScore.css("cursor", "pointer");	
+			uvScore.on("mouseover",function() {
+				$("#theUVIMG").css("display","block");
+			})
+			uvScore.on("mouseleave",function() {
+				$("#theUVIMG").css("display","none");
+			})
+
+			$("#peeTextw0").append(uvScore);
+
 			searchThis("#cardBodyw0", response.current.weather[0].main);
 
 
@@ -254,7 +270,11 @@ $(document).ready(function () {
 				$("#peeTextw" + x).append("Min Temp : " + Math.round(parseInt(response.daily[x].temp.min)) + " °C <BR>");
 				$("#peeTextw" + x).append("Forecast : " + response.daily[x].weather[0].description + "<BR>");
 				$("#peeTextw" + x).append("Wind : " + response.daily[x].wind_speed + "<BR>");
+			
 				$("#peeTextw" + x).append("UV Score : " + response.daily[x].uvi)
+
+	
+
 
 				var theIcon = response.daily[x].weather[0].icon;
 				var searchStringImg = "http://openweathermap.org/img/wn/" + response.daily[x].weather[0].icon + "@2x.png";

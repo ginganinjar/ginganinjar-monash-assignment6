@@ -92,20 +92,12 @@ white-space: nowrap;
 
 
 
-@keyframes animatedBackgroundFog {
-  from {
-    background-position: -200% 0;
-  }
-  to {
-    background-position: 200% 0;
-  }
-}
 
 
 
 .fog {
 
-  background-image : url("../imgs/fog.png");
+  background-image: url(../imgs/fog.png);
   background-position: -200px 0px;
   background-repeat: repeat-y; 
   animation-direction : normal;
@@ -114,6 +106,14 @@ white-space: nowrap;
 }
 
 
+@keyframes animatedBackgroundFog {
+  from {
+    background-position: -200px 0;
+  }
+  to {
+    background-position: 200px 0;
+  }
+}
 
 @keyframes animatedBackgroundSun {
   from {
