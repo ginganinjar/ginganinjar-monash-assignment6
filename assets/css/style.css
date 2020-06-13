@@ -52,7 +52,7 @@ white-space: nowrap;
 
 @keyframes animatedBackground {
   from {
-    background-position: -1050px 0;
+    background-position: -200% 0;
   }
   to {
     background-position: 1050px 0;
@@ -62,7 +62,7 @@ white-space: nowrap;
 
   background-image : url("../imgs/cloud.png");
   background-position: -100px 0px;
-  background-repeat: no-repeat;
+  background-repeat: repeat-x;
   animation-direction : normal;
   animation: animatedBackground 36s linear infinite;
    background-size: 100% 100%;
@@ -195,4 +195,45 @@ white-space: nowrap;
 
 .zeroMargin {
   margin-left : 0;
+  margin-right : 0;
+}
+
+/* css loader */
+
+.lds-hourglass {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-hourglass:after {
+  content: " ";
+  display: block;
+  border-radius: 50%;
+  width: 0;
+  height: 0;
+  margin: 8px;
+  box-sizing: border-box;
+  border: 32px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: lds-hourglass 1.2s infinite;
+}
+@keyframes lds-hourglass {
+  0% {
+    transform: rotate(0);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  50% {
+    transform: rotate(900deg);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  100% {
+    transform: rotate(1800deg);
+  }
+}
+
+.uv {
+
+  float: right;
+  margin-top: -187px;
 }

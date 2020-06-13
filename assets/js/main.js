@@ -17,8 +17,13 @@ $(document).ready(function () {
 	}
 
 	function accessStorage(toDo,dataID) {
+		if (dataID !== null) {
+		if (dataID == dataID.toString().toUpperCase());
+		
+		}
+
 		var getStorage = localStorage["weatherData"];
-	
+
 		// if getStorageInfo is not empty then parse json otherwise set as empty array
 		 var results = getStorage ? JSON.parse(getStorage) : [];
 
@@ -40,7 +45,7 @@ $(document).ready(function () {
 					newListing.attr("id","searchBar" + x);
 					newListing.text(text.search.toUpperCase());
 					newListing.on("click",function(event) {
-						
+						$("#CSSLoader").css("display","block");
 						cleanUp();
 						accessStorage("save",this.innerHTML);	
 						getGeoLocal(this.innerHTML);
@@ -60,7 +65,7 @@ $(document).ready(function () {
 		if (toDo === "save") {
 			
 			// get object array of matches to the existing search
-			objIndex = results.findIndex((obj => obj.search == dataID.toUpperCase()));
+			objIndex = results.findIndex((obj => obj.search == dataID));
 
 			if (objIndex !== -1) {
 				//Log object to Console.
@@ -90,7 +95,7 @@ $(document).ready(function () {
 				bodyCard.attr("id","bodyCard" + thisID);
 			// info boxes below need a smaller size to display correctly
 			if (iD > 0) {
-				bodyCard.attr("style", "width: 13rem");
+				bodyCard.attr("style", "width: 11rem");
 			}
 				$("#" + thisID).append(bodyCard);
 
@@ -127,6 +132,8 @@ function thisTime(thisTime) {
 
 function searchThis(theID, description) {
 theClass = undefined;
+
+
 console.log("the id i have is " + theID);
 console.log("the description I have is " + description);
 
@@ -166,6 +173,7 @@ console.log("the description I have is " + description);
 			}
 		
 		$.ajax(settings).done(function (response) {
+			$("#CSSLoader").css("display","none");
 			console.log(response);
 			var daystotal = response.daily;
 			console.log(daystotal);
@@ -175,7 +183,7 @@ console.log("the description I have is " + description);
 				//var currentTemp = response.current.temp;
 				var currentHunidity = response.current.humidity;
 				var currentDescription = response.current.weather[0].description;
-	
+
 				makeInfoBox(0);
 
 				var workedTime = thisTime(new Date(response.current.dt));
@@ -184,15 +192,26 @@ console.log("the description I have is " + description);
 			
 		
 			
-				$("#peeTextw0").append("Current temp : " + response.current.temp + " °C <BR>");
-				$("#peeTextw0").append("Feels Like: " + response.current.feels_like + " °C <BR>");
+				$("#peeTextw0").append("Current temp : " + Math.round(parseInt(response.current.temp)) + " °C <BR>");
+				$("#peeTextw0").append("Feels Like: " + Math.round(parseInt(response.current.feels_like)) + " °C <BR>");
 				$("#peeTextw0").append("Humidity: " + response.current.humidity + " <BR>");
 				$("#peeTextw0").append("Description: " + response.current.weather[0].description + " <BR>");		
 				$("#peeTextw0").append("Wind Speed: " + response.current.wind_speed + " <BR>");				
 				$("#peeTextw0").append("UV: " + response.current.uvi + " <BR>");				
 
-				searchThis("#bodyCardw0", response.current.weather[0].main);
+				let theUVScore = Math.round(parseInt(response.current.uvi));
+			
+				// lets see what the UV score is and provide info accordingly.
+				if (theUVScore < 3) { theUVpath = "./assets/imgs/UV-Index-1.png";}
+				if ((theUVScore > 2) && (theUVScore < 8)) { theUVpath = "./assets/imgs/UV-Index-2.png";}
+				if (theUVScore > 7) { theUVpath = "./assets/imgs/UV-Index-3.png";}			
 
+				console.log("appending UV Image");
+					let theUVIMG = $("<img>");
+					 theUVIMG.attr("src", theUVpath);
+					theUVIMG.attr("class","uv");
+					 $("#cardBodyw0").append(theUVIMG);
+						
 				
 
 
@@ -201,9 +220,9 @@ console.log("the description I have is " + description);
 						makeInfoBox(x);
 						$("#theTitlew" + (x)).text(thisTime(response.daily[x].dt));
 					
-						$("#peeTextw" + x).append("Daily Avg : " + response.daily[x].temp.day + " °C <BR>");
-						$("#peeTextw" + x).append("Max Temp : " + response.daily[x].temp.max + " °C <BR>");
-						$("#peeTextw" + x).append("Min Temp : " + response.daily[x].temp.min + " °C <BR>");
+						$("#peeTextw" + x).append("Daily Avg : " + Math.round(parseInt(response.daily[x].temp.day)) + " °C <BR>");
+						$("#peeTextw" + x).append("Max Temp : " + Math.round(parseInt(response.daily[x].temp.max)) + " °C <BR>");
+						$("#peeTextw" + x).append("Min Temp : " + Math.round(parseInt(response.daily[x].temp.min)) + " °C <BR>");
 						$("#peeTextw" + x).append("Forecast : " + response.daily[x].weather[0].description + "<BR>");
 						$("#peeTextw" + x).append("Wind Speed : " + response.daily[x].wind_speed + "<BR>");
 
@@ -288,6 +307,7 @@ console.log("the description I have is " + description);
 					newListing.text(theCityName + " ," + theCountry);
 					newListing.on("click",function() {
 						// save this record to storage
+						$("#CSSLoader").css("display","block");
 						accessStorage("save",this.innerHTML);	
 						getGeoLocal(this.innerHTML);
 					})
@@ -312,6 +332,7 @@ console.log("the description I have is " + description);
 			if (e.which == 13) {
 				// save this information to local storage
 					console.log("executing 13");
+					$("#CSSLoader").css("display","block");
 					getGeoLocal($("#searchTitle").val());
 					cleanUp();
 			}
