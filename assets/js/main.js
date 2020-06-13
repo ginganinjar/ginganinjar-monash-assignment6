@@ -248,7 +248,6 @@ $(document).ready(function () {
 
 			var uvScore = $("<div>");
 			uvScore.text("UV Score :" + response.current.uvi);
-			// uvScore.css("text-decoration", "underline");
 			uvScore.css("cursor", "pointer");	
 			uvScore.css("color",theColor);
 			theUVIMG.attr("title", theMessage);
@@ -265,11 +264,6 @@ $(document).ready(function () {
 
 			theMeter.attr("low", "14");
 			$("#peeTextw0").append(theMeter);
-
-		
-			// low="10" optimum="50" high="90"
-			// <meter id="disk_d" value="0.6">60%</meter>
-
 
 			searchThis("#cardBodyw0", response.current.weather[0].main);
 
