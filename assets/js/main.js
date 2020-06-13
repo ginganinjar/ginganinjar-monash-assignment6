@@ -223,22 +223,22 @@ $(document).ready(function () {
 			$("#peeTextw0").append("Description : " + response.current.weather[0].description + " <BR>");
 			
 			var showThisWindDesc = getWind(response.current.wind_speed);
-			$("#peeTextw0").append(showThisWindDesc + " <BR>");
+			$("#peeTextw0").append(showThisWindDesc + " <BR><BR>");
 			// get the pure uv score for image information
 			let theUVScore = response.current.uvi;
 
 			// lets see what the UV score is and provide info accordingly.
-			if (theUVScore < 3) { theColor = "green"; theUVpath = "./assets/imgs/UV-Index-1.png"; }
-			if ((theUVScore > 2) && (theUVScore < 8)) { theColor = "orange"; theUVpath = "./assets/imgs/UV-Index-2.png"; }
-			if (theUVScore > 7) { theColor = "red"; theUVpath = "./assets/imgs/UV-Index-3.png"; }
+			if (theUVScore < 3) { theColor = "green"; theUVpath = "./assets/imgs/UV-Index-1.png"; theMessage = "This UV rating is considered safe.";theMeterStatus = "meterOK";}
+			if ((theUVScore > 3) && (theUVScore < 8)) { theColor = "orange"; theUVpath = "./assets/imgs/UV-Index-2.png";theMessage = "A rating of 3 to 7 is considered unsafe and you should take the appropriate precautions to avoid sun exposure where possible."; theMeterStatus = "meteraverage";}
+			if (theUVScore > 7) { theColor = "red"; theUVpath = "./assets/imgs/UV-Index-3.png"; theMessage = "This is the highest level of UV rating. Ensure you wear a hat and sunscreen and avoid the sun at all times.";theMeterStatus = "meterbad";}
 
 			console.log("appending UV Image");
 			let theUVIMG = $("<img>");
 			theUVIMG.attr("src", theUVpath);
 			theUVIMG.attr("id","theUVIMG");
 			theUVIMG.attr("class", "uv");
-			theUVIMG.attr("style", "cursor:pointer;width:200px;height:205px;margin-left:60%;display:none;");
-			theUVIMG.attr("title", "View more information about UV risks and dangers");
+			theUVIMG.attr("style", "cursor:pointer;width:200px;height:215px;margin-left:60%;");
+			theUVIMG.attr("title", "View more information relating to UV protection");
 
 			theUVIMG.on("click",function(){
 				window.location.href='https://www.uvdaily.com.au/working-outdoors/uv-risk/#:~:text=Exposure%20to%20UV%20radiation%20from,risk%20of%20developing%20skin%20cancer.&text=UV%20%E2%80%93%20thats%20ultraviolet%20radiation%20%E2%80%93%20damage,in%20your%20skin%20over%20time';
@@ -248,17 +248,28 @@ $(document).ready(function () {
 
 			var uvScore = $("<div>");
 			uvScore.text("UV Score :" + response.current.uvi);
-			uvScore.css("text-decoration", "underline");
+			// uvScore.css("text-decoration", "underline");
 			uvScore.css("cursor", "pointer");	
 			uvScore.css("color",theColor);
-			uvScore.on("mouseover",function() {
-				$("#theUVIMG").css("display","block");
-			})
-			uvScore.on("mouseleave",function() {
-				$("#theUVIMG").css("display","none");
-			})
-
+			theUVIMG.attr("title", theMessage);
 			$("#peeTextw0").append(uvScore);
+	
+			theUVDangerScore = ((7 / 100) * response.current.uvi);
+			console.log("the uv danger" + theUVDangerScore);
+			var theMeter = $("<meter>")
+			theMeter.attr("id", "meterid");
+			theMeter.attr("value",theUVDangerScore);
+			
+
+			theMeter.attr("class",theMeterStatus);
+
+			theMeter.attr("low", "14");
+			$("#peeTextw0").append(theMeter);
+
+		
+			// low="10" optimum="50" high="90"
+			// <meter id="disk_d" value="0.6">60%</meter>
+
 
 			searchThis("#cardBodyw0", response.current.weather[0].main);
 
@@ -367,6 +378,8 @@ $(document).ready(function () {
 		});
 	};
 
+
+	
 	accessStorage("load", null);
 
 	$("#searchTitle").on("click", function () {

@@ -86,7 +86,7 @@ white-space: nowrap;
   background-position: -200px 0px;
   background-repeat: repeat-y; 
   animation-direction : normal;
-  animation: animatedBackgroundRain 7s linear infinite;
+  animation: animatedBackgroundRain 1s linear infinite;
    background-size: 100% 100%;
 }
 
@@ -237,6 +237,7 @@ white-space: nowrap;
 
 .niceText {
 font-weight: 600;
+padding : 1%;
 
 }
 
@@ -248,6 +249,7 @@ font-weight: 600;
 .makeRight {
   width: 11rem;
   min-height: 420px;
+  /* padding: 1%; */
 }
 
 @media screen and (max-width: 450px) {
@@ -256,3 +258,43 @@ font-weight: 600;
   }
 }
 
+meter{
+  --background: #dadada;
+  --optimum: forestgreen;
+  --sub-optimum: gold;
+  --sub-sub-optimum: crimson;
+
+  /* The gray background in Firefox */
+  background: var(--background);
+  display: block;
+  margin-bottom: 1em;
+  width: 25%;
+}
+
+.meterOK ::-webkit-meter-optimum-value {
+  background: green;
+  background: var(--background);
+  display: block;
+  margin-bottom: 1em;
+  width: 25%;
+}
+.meterOK::-moz-meter-bar { /* Firefox Pseudo Class */
+  background: green;
+}
+
+
+
+.meteraverage::-webkit-meter-optimum-value {
+  background: orange;
+}
+.meteraverage::-moz-meter-bar { /* Firefox Pseudo Class */
+  background: orange;
+}
+
+
+.meterbad::-webkit-meter-optimum-value {
+  background: red;
+}
+.meterbad::-moz-meter-bar { /* Firefox Pseudo Class */
+  background: red;
+}
