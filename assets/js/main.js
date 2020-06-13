@@ -65,7 +65,7 @@ $(document).ready(function () {
 		if (toDo === "save") {
 			
 			// get object array of matches to the existing search
-			objIndex = results.findIndex((obj => obj.search == dataID));
+			objIndex = results.findIndex((obj => obj.search == dataID.toUpperCase()));
 
 			if (objIndex !== -1) {
 				//Log object to Console.
@@ -199,7 +199,8 @@ console.log("the description I have is " + description);
 				$("#peeTextw0").append("Wind Speed: " + response.current.wind_speed + " <BR>");				
 				$("#peeTextw0").append("UV: " + response.current.uvi + " <BR>");				
 
-				let theUVScore = Math.round(parseInt(response.current.uvi));
+				// get the pure uv score for image information
+				let theUVScore = response.current.uvi;
 			
 				// lets see what the UV score is and provide info accordingly.
 				if (theUVScore < 3) { theUVpath = "./assets/imgs/UV-Index-1.png";}
