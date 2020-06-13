@@ -234,3 +234,8 @@ white-space: nowrap;
   float: right;
   margin-top: -187px;
 }
+
+.niceText {
+font-weight: 600;
+
+}

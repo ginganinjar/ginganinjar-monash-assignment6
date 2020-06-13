@@ -104,7 +104,7 @@ $(document).ready(function () {
 		$("#" + thisID).append(bodyCard);
 
 		var cardHeader = $("<div>");
-		cardHeader.attr("class", "card-header infoBox");
+		cardHeader.attr("class", "card-header niceText infoBox");
 		cardHeader.css("background-color", "#f4976a")
 		cardHeader.attr("id", "theTitle" + thisID);
 		$("#bodyCard" + thisID).append(cardHeader);
@@ -383,8 +383,6 @@ $(document).ready(function () {
 			$("#CSSLoader").css("display", "block");
 			getGeoLocal($("#searchTitle").val().toUpperCase());
 			cleanUp();
-
-			//searchHere = searchHere.toUpperCase();
 		}
 
 		// introduced the timeout to stop multiple requests from flooding the api server

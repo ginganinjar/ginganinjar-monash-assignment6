@@ -1,11 +1,36 @@
-06 Server-Side APIs: Weather Dashboard
-Developers are often tasked with retrieving data from another application's API and using it in the context of their own. Third-party APIs allow developers to access their data and functionality by making requests with specific parameters to a URL. Your challenge is to build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS.
-Use the OpenWeather API to retrieve weather data for cities. The documentation includes a section called "How to start" that will provide basic setup and usage instructions. Use localStorage to store any persistent data.
+Weather App
+This web application functions as a weather information guide.
 
-User Story
-AS A traveler
-I WANT to see the weather outlook for multiple cities
-SO THAT I can plan a trip accordingly
+Installation
+Clone the folder onto your own computer by forking the repository and using the "Clone or download" button on github.
+
+Functionality
+This app saves previous searched locations in the local storage database and calls 3 api's to identify appropriate locations and then poll the API Ppenweathermap data. Animations have been provided to give a more enjouable user interface on various weather predictions throughout the week.
+
+The intent of this APP is to provide a dynamic and sleek experience when searching for information relation to weather information.
+
+Live version here :  https://ginganinjar.github.io/ginganinjar-monash-assignment6/
+
+## Compatibility
+### Compiled state
+- IE 10+
+- Firefox 32+ (maybe lower)
+- Chrome 32+ (maybe lower)
+- Chromium 43+ (I think it will be same like Chrome but I don't have chance to test lower versions)
+- Opera 30+ (maybe lower)
+- Edge 14+
+- Safari 9+ (awful browser it's like new IE)
+- Brave - all version - (I highly recommend Brave given it's compatibility with Chrome plugins) 
+
+
+Installation
+Use git to clone the project using the repository :git@github.com:ginganinjar/ginganinjar-monash-assignment6.git
+
+git clone git@github.com:ginganinjar/ginganinjar-monash-assignment6.git
+
+Usage
+Use the app to view weather infromation including UV ratings for any location throughout the world.
+
 
 Acceptance Criteria
 GIVEN a weather dashboard with form inputs
@@ -22,3 +47,11 @@ THEN I am again presented with current and future conditions for that city
 WHEN I open the weather dashboard
 THEN I am presented with the last searched city forecast
 The following image demonstrates the application functionality:
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+Shareware. No license or copyright provisions.
+
+
