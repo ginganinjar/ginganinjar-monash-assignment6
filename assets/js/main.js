@@ -110,14 +110,14 @@ $(document).ready(function () {
 	function makeInfoBox(thisID) {
 		var iD = thisID;
 		thisID = "w" + thisID;
-		// create divs
-		var bodyCard = $("<div>");
+		// create bootstrap cardfile divs
 
+		var bodyCard = $("<div>");
 		bodyCard.attr("id", "bodyCard" + thisID);
 		// info boxes below need a smaller size to display correctly
+		// also want to make media query for mobile screen.
 		if (iD > 0) {
 			bodyCard.attr("class", "card infoBox makeRight");		
-			// bodyCard.attr("style", "width: 11rem;min-height: 420px;");
 		} else {
 			bodyCard.attr("class", "card infoBox");		
 		}
@@ -155,34 +155,17 @@ $(document).ready(function () {
 
 	}
 
+		// function appends class with animated background based on description
+		// of weather provided by site.
 
 	function searchThis(theID, description) {
 		theClass = undefined;
 
-
-		console.log("the id i have is " + theID);
-		console.log("the description I have is " + description);
-
-
-		if (description === "Clouds") {
-			theClass = "clouds"
-		};
-
-		if (description === "Rain") {
-			theClass = "rain"
-		};
-
-		if (description === "Clear") {
-			theClass = "sunshine"
-		};
-
-		if (description === "Thunderstorm") {
-			theClass = "thunder"
-		};
-
-		if (description === "Fog") {
-			theClass = "fog"
-		};
+		if (description === "Clouds") { theClass = "clouds" };
+		if (description === "Rain") { theClass = "rain" };
+		if (description === "Clear") { theClass = "sunshine" };
+		if (description === "Thunderstorm") { theClass = "thunder" };
+		if (description === "Fog") { theClass = "fog" };
 
 		// itterate through class list so as not to break boxes
 		// when we adjust for media settings.
@@ -190,18 +173,16 @@ $(document).ready(function () {
 		if (theClass !== undefined) {
 			
 			var classes = $(theID).attr('class').split(" ");
-			//console.log(classes);
-			var theClassList = "";
+		var theClassList = "";
 
 			for (i=0;i < classes.length; i++) {
 				theClassList = theClassList + classes[i] + " ";
 
 			}
-			theClassList = theClassList + theClass;
-			console.log("the class list : " + theClassList);
-
-
-			$(theID).attr("class", "card infoBox " + theClassList);
+		// The final class list incliding weather class
+		theClassList = theClassList + theClass;
+	$(theID).attr("class", "card infoBox " + theClassList);
+	
 		}
 
 	}
@@ -218,12 +199,8 @@ $(document).ready(function () {
 
 		$.ajax(settings).done(function (response) {
 			$("#CSSLoader").css("display", "none");
-			console.log(response);
 			var daystotal = response.daily;
-			console.log(daystotal);
-			var totalNumber = parseInt(daystotal.length);
-			console.log(totalNumber);
-
+	
 			makeInfoBox(0);
 
 			var workedTime = thisTime(new Date(response.current.dt));
@@ -241,9 +218,9 @@ $(document).ready(function () {
 
 			$("#peeTextw0").append("Current temp : " + Math.round(parseInt(response.current.temp)) + " °C <BR>");
 			$("#peeTextw0").append("Todays Top : " + Math.round(parseInt(response.current.temp)) + " °C <BR>");	
-			$("#peeTextw0").append("Feels Like: " + Math.round(parseInt(response.current.feels_like)) + " °C <BR>");
-			$("#peeTextw0").append("Humidity: " + response.current.humidity + " <BR>");
-			$("#peeTextw0").append("Description: " + response.current.weather[0].description + " <BR>");
+			$("#peeTextw0").append("Feels Like : " + Math.round(parseInt(response.current.feels_like)) + " °C <BR>");
+			$("#peeTextw0").append("Humidity : " + response.current.humidity + " <BR>");
+			$("#peeTextw0").append("Description : " + response.current.weather[0].description + " <BR>");
 			
 			var showThisWindDesc = getWind(response.current.wind_speed);
 			$("#peeTextw0").append(showThisWindDesc + " <BR>");
@@ -265,8 +242,6 @@ $(document).ready(function () {
 
 			theUVIMG.on("click",function(){
 				window.location.href='https://www.uvdaily.com.au/working-outdoors/uv-risk/#:~:text=Exposure%20to%20UV%20radiation%20from,risk%20of%20developing%20skin%20cancer.&text=UV%20%E2%80%93%20thats%20ultraviolet%20radiation%20%E2%80%93%20damage,in%20your%20skin%20over%20time';
-			
-
 			})
 
 			$("#cardBodyw0").append(theUVIMG);
@@ -286,7 +261,6 @@ $(document).ready(function () {
 			$("#peeTextw0").append(uvScore);
 
 			searchThis("#cardBodyw0", response.current.weather[0].main);
-
 
 			for (x = 1; x < 7; x++) {
 
@@ -319,12 +293,9 @@ $(document).ready(function () {
 		// convert string to uppercase
 
 	searchHere = searchHere.toUpperCase();
-		console.log("Im searching for this" + searchHere);
-
 
 		// tidy up as this is a new search
 		cleanUp();
-
 
 		$.ajax({
 			"url": "https://www.mapquestapi.com/geocoding/v1/address?key=6X1OoAA3I2lIVopuMM6Mp8RzTE8Ig9sq&location=" + encodeURIComponent(searchHere),
@@ -410,7 +381,6 @@ $(document).ready(function () {
 
 		if (e.which == 13) {
 			// save this information to local storage
-			console.log("executing 13");
 			$("#CSSLoader").css("display", "block");
 			getGeoLocal($("#searchTitle").val().toUpperCase());
 			cleanUp();
@@ -427,9 +397,6 @@ $(document).ready(function () {
 
 
 		}, 1500);
-
-
-
 
 	});
 
