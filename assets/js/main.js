@@ -229,7 +229,7 @@ console.log("the description I have is " + description);
 
 
 		$.ajax({
-            "url": "http://www.mapquestapi.com/geocoding/v1/address?key=6X1OoAA3I2lIVopuMM6Mp8RzTE8Ig9sq&location=" + encodeURIComponent(searchHere),
+            "url": "https://www.mapquestapi.com/geocoding/v1/address?key=6X1OoAA3I2lIVopuMM6Mp8RzTE8Ig9sq&location=" + encodeURIComponent(searchHere),
 			"method": "GET",
 			"success": function(response){
 				console.log("Dumping getGeoLocal results");
