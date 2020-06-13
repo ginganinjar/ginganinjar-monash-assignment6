@@ -1,10 +1,10 @@
-Weather App
+## Weather App
 This web application functions as a weather information guide.
 
-Installation
+## Installation
 Clone the folder onto your own computer by forking the repository and using the "Clone or download" button on github.
 
-Functionality
+## Functionality
 This app saves previous searched locations in the local storage database and calls 3 api's to identify appropriate locations and then poll the API Openweathermap data. Animations have been provided to give a more enjouable user interface on various weather predictions throughout the week.
 
 The intent of this APP is to provide a dynamic and sleek experience when searching for information relation to weather information.
@@ -24,7 +24,7 @@ Live version here :  https://ginganinjar.github.io/ginganinjar-monash-assignment
 
 
 Installation
-Use git to clone the project using the repository :git@github.com:ginganinjar/ginganinjar-monash-assignment6.git
+Use git to clone the project using the repository : ginganinjar/ginganinjar-monash-assignment6.git
 
 git clone git@github.com:ginganinjar/ginganinjar-monash-assignment6.git
 
