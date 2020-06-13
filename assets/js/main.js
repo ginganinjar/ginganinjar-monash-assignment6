@@ -1,5 +1,3 @@
-
-
 var response;
 var sendRequest;
 
@@ -114,7 +112,7 @@ $(document).ready(function () {
 		thisID = "w" + thisID;
 		// create divs
 		var bodyCard = $("<div>");
-		bodyCard.attr("class", "card infoBox ");
+		bodyCard.attr("class", "card infoBox makeRight");
 		bodyCard.attr("id", "bodyCard" + thisID);
 		// info boxes below need a smaller size to display correctly
 		if (iD > 0) {
@@ -208,10 +206,6 @@ $(document).ready(function () {
 			var totalNumber = parseInt(daystotal.length);
 			console.log(totalNumber);
 
-			//var currentTemp = response.current.temp;
-			var currentHunidity = response.current.humidity;
-			var currentDescription = response.current.weather[0].description;
-
 			makeInfoBox(0);
 
 			var workedTime = thisTime(new Date(response.current.dt));
@@ -285,13 +279,9 @@ $(document).ready(function () {
 				$("#peeTextw" + x).append("Max Temp : " + Math.round(parseInt(response.daily[x].temp.max)) + " °C <BR><BR>");
 				$("#peeTextw" + x).append("Min Temp : " + Math.round(parseInt(response.daily[x].temp.min)) + " °C <BR>");
 				$("#peeTextw" + x).append("Forecast : " + response.daily[x].weather[0].description + "<BR>");
-
-
-				$("#peeTextw" + x).append(getWind(response.daily[x].wind_speed) + " <BR>");
-			
+				$("#peeTextw" + x).append(getWind(response.daily[x].wind_speed) + " <BR>");	
 				$("#peeTextw" + x).append("UV Score : " + response.daily[x].uvi)
 
-				var theIcon = response.daily[x].weather[0].icon;
 				var searchStringImg = "http://openweathermap.org/img/wn/" + response.daily[x].weather[0].icon + "@2x.png";
 				console.log(searchStringImg);
 				var $addImg = $("<img>");
