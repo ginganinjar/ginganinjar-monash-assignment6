@@ -239,3 +239,8 @@ white-space: nowrap;
 font-weight: 600;
 
 }
+
+.smallBox {
+  width: 10rem;
+  min-height: 400px;
+}

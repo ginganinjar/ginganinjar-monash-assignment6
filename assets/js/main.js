@@ -16,6 +16,25 @@ $(document).ready(function () {
 
 	}
 
+	function getWind(windSpeed) {
+
+		if (windSpeed < 50) {winDesc = "Hurricane";}
+		if (windSpeed < 32) {winDesc = "Storm";}
+		if (windSpeed < 28) {winDesc = "Whole gale";}
+		if (windSpeed < 26) {winDesc = "Strong gale";}
+		if (windSpeed < 20) {winDesc = "Fresh gale";}
+		if (windSpeed < 17) {winDesc = "Moderate gale";}	
+		if (windSpeed < 14) {winDesc = "Strong breeze";}
+		if (windSpeed < 11) {winDesc = "Fresh breeze";}		
+		if (windSpeed < 6) {winDesc = "Moderate breeze";}	
+		if (windSpeed < 5.5) {winDesc = "Gentle breeze";}		
+		if (windSpeed < 2.3) {winDesc = "Light breeze";}
+		if (windSpeed < 1.5) {winDesc = "Light air";}						
+		return(winDesc);
+
+
+	}
+
 	// all requests to and from localstorage occur in this routine
 	// todo is option of save or load
 	// dataid is the search string used to locate
@@ -95,11 +114,12 @@ $(document).ready(function () {
 		thisID = "w" + thisID;
 		// create divs
 		var bodyCard = $("<div>");
-		bodyCard.attr("class", "card infoBox");
+		bodyCard.attr("class", "card infoBox ");
 		bodyCard.attr("id", "bodyCard" + thisID);
 		// info boxes below need a smaller size to display correctly
 		if (iD > 0) {
-			bodyCard.attr("style", "width: 11rem;min-height: 400px;");
+			
+			bodyCard.attr("style", "width: 11rem;min-height: 420px;");
 		}
 		$("#" + thisID).append(bodyCard);
 
@@ -212,9 +232,9 @@ $(document).ready(function () {
 			$("#peeTextw0").append("Feels Like: " + Math.round(parseInt(response.current.feels_like)) + " °C <BR>");
 			$("#peeTextw0").append("Humidity: " + response.current.humidity + " <BR>");
 			$("#peeTextw0").append("Description: " + response.current.weather[0].description + " <BR>");
-			$("#peeTextw0").append("Wind Speed: " + response.current.wind_speed + " <BR>");
-
-
+			
+			var showThisWindDesc = getWind(response.current.wind_speed);
+			$("#peeTextw0").append(showThisWindDesc + " <BR>");
 			// get the pure uv score for image information
 			let theUVScore = response.current.uvi;
 
@@ -265,7 +285,9 @@ $(document).ready(function () {
 				$("#peeTextw" + x).append("Max Temp : " + Math.round(parseInt(response.daily[x].temp.max)) + " °C <BR><BR>");
 				$("#peeTextw" + x).append("Min Temp : " + Math.round(parseInt(response.daily[x].temp.min)) + " °C <BR>");
 				$("#peeTextw" + x).append("Forecast : " + response.daily[x].weather[0].description + "<BR>");
-				$("#peeTextw" + x).append("Wind : " + response.daily[x].wind_speed + "<BR>");
+
+
+				$("#peeTextw" + x).append(getWind(response.daily[x].wind_speed) + " <BR>");
 			
 				$("#peeTextw" + x).append("UV Score : " + response.daily[x].uvi)
 
@@ -320,7 +342,8 @@ $(document).ready(function () {
 				img.src = theMapURL;
 				img.id = "imageDiv"
 				$("#theMapSRC").append(img);
-				$("#imageDiv").attr({ "width": "99%" })
+				$("#imageDiv").attr({ "width": "99%" });
+				$("#imageDiv").css("margin-top","10px");
 				getTheResults(thisLat, thisLng);
 
 
