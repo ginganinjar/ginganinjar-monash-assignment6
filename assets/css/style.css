@@ -244,3 +244,15 @@ font-weight: 600;
   width: 10rem;
   min-height: 400px;
 }
+
+.makeRight {
+  width: 11rem;
+  min-height: 420px;
+}
+
+@media screen and (max-width: 450px) {
+  .makeRight {
+  width: 378px;
+  }
+}
+

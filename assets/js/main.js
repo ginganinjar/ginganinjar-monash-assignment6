@@ -112,13 +112,16 @@ $(document).ready(function () {
 		thisID = "w" + thisID;
 		// create divs
 		var bodyCard = $("<div>");
-		bodyCard.attr("class", "card infoBox makeRight");
+
 		bodyCard.attr("id", "bodyCard" + thisID);
 		// info boxes below need a smaller size to display correctly
 		if (iD > 0) {
-			
-			bodyCard.attr("style", "width: 11rem;min-height: 420px;");
+			bodyCard.attr("class", "card infoBox makeRight");		
+			// bodyCard.attr("style", "width: 11rem;min-height: 420px;");
+		} else {
+			bodyCard.attr("class", "card infoBox");		
 		}
+
 		$("#" + thisID).append(bodyCard);
 
 		var cardHeader = $("<div>");
@@ -181,9 +184,24 @@ $(document).ready(function () {
 			theClass = "fog"
 		};
 
+		// itterate through class list so as not to break boxes
+		// when we adjust for media settings.
 
 		if (theClass !== undefined) {
-			$(theID).attr("class", "card infoBox " + theClass);
+			
+			var classes = $(theID).attr('class').split(" ");
+			//console.log(classes);
+			var theClassList = "";
+
+			for (i=0;i < classes.length; i++) {
+				theClassList = theClassList + classes[i] + " ";
+
+			}
+			theClassList = theClassList + theClass;
+			console.log("the class list : " + theClassList);
+
+
+			$(theID).attr("class", "card infoBox " + theClassList);
 		}
 
 	}
