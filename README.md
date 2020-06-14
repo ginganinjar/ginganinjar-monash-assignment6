@@ -5,7 +5,7 @@ This web application functions as a weather information guide.
 Clone the folder onto your own computer by forking the repository and using the "Clone or download" button on github.
 
 ## Functionality
-This app saves previous searched locations in the local storage database and calls 3 api's to identify appropriate locations and then poll the API Openweathermap data. Animations have been provided to give a more enjouable user interface on various weather predictions throughout the week.
+This app saves previous searched locations in the local storage database and calls 3 api's to identify appropriate locations and then poll the API Openweathermap data. If enabled, the users location settings will ne automatically displayed at the time the user enters the page. Animations have been provided to give a more enjouable user interface on various weather predictions throughout the week.
 
 The intent of this APP is to provide a dynamic and sleek experience when searching for information relation to weather information.
 
