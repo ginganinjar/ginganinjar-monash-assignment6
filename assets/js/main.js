@@ -7,9 +7,6 @@ $(document).ready(function () {
 
 // check the go locals. see if we have any.backgroundColors
 
-
-
-
 	// create function for rountine class/div cleanup
 
 	
@@ -20,21 +17,34 @@ $(document).ready(function () {
 		$(".infoBox").remove();
 
 	}
+// stolen function from stackoverflow to convert all first letters 
+// to presentable text.
+
+	function ucFirstAllWords( str )
+{
+    var pieces = str.split(" ");
+    for ( var i = 0; i < pieces.length; i++ )
+    {
+        var j = pieces[i].charAt(0).toUpperCase();
+        pieces[i] = j + pieces[i].substr(1);
+    }
+    return pieces.join(" ");
+}
 
 	function getWind(windSpeed) {
 
 		if (windSpeed < 50) {winDesc = "Hurricane";}
 		if (windSpeed < 32) {winDesc = "Storm";}
-		if (windSpeed < 28) {winDesc = "Whole gale";}
-		if (windSpeed < 26) {winDesc = "Strong gale";}
-		if (windSpeed < 20) {winDesc = "Fresh gale";}
-		if (windSpeed < 17) {winDesc = "Moderate gale";}	
-		if (windSpeed < 14) {winDesc = "Strong breeze";}
-		if (windSpeed < 11) {winDesc = "Fresh breeze";}		
-		if (windSpeed < 6) {winDesc = "Moderate breeze";}	
-		if (windSpeed < 5.5) {winDesc = "Gentle breeze";}		
-		if (windSpeed < 2.3) {winDesc = "Light breeze";}
-		if (windSpeed < 1.5) {winDesc = "Light air";}						
+		if (windSpeed < 28) {winDesc = "Whole Gale";}
+		if (windSpeed < 26) {winDesc = "Strong Gale";}
+		if (windSpeed < 20) {winDesc = "Fresh Gale";}
+		if (windSpeed < 17) {winDesc = "Moderate Gale";}	
+		if (windSpeed < 14) {winDesc = "Strong Breeze";}
+		if (windSpeed < 11) {winDesc = "Fresh Breeze";}		
+		if (windSpeed < 6) {winDesc = "Moderate Breeze";}	
+		if (windSpeed < 5.5) {winDesc = "Gentle Breeze";}		
+		if (windSpeed < 2.3) {winDesc = "Light Breeze";}
+		if (windSpeed < 1.5) {winDesc = "Light Air";}						
 		return(winDesc);
 
 
@@ -104,8 +114,6 @@ $(document).ready(function () {
 				//Log object to Console.
 				console.log("Before update: ", results[objIndex])
 
-			
-
 				//Update object's "search" field property to avoid duplication.
 
 				results[objIndex].search = dataID.toUpperCase();
@@ -150,11 +158,6 @@ $(document).ready(function () {
 		cardBody.attr("style", "min-height: 220px;padding-left:2%;")
 		cardBody.attr("id", "cardBody" + thisID);
 		$("#bodyCard" + thisID).append(cardBody);
-
-		// var h5 = $("<h5>")
-		// h5.attr("class", "card-title infoBox");
-		// h5.attr("id", "cardtitle" + thisID);
-		// $("#cardBody" + thisID).append(h5);
 
 		var peepee = $("<div>")
 		peepee.attr("class", "card-text infoBox");
@@ -235,7 +238,7 @@ $(document).ready(function () {
 			$("#peeTextw0").append("Todays Top : " + Math.round(parseInt(response.current.temp)) + " °C <BR>");	
 			$("#peeTextw0").append("Feels Like : " + Math.round(parseInt(response.current.feels_like)) + " °C <BR>");
 			$("#peeTextw0").append("Humidity : " + response.current.humidity + " <BR>");
-			$("#peeTextw0").append("Description : " + response.current.weather[0].description + " <BR>");
+			$("#peeTextw0").append("Description : " + ucFirstAllWords(response.current.weather[0].description) + " <BR>");
 			
 			var showThisWindDesc = getWind(response.current.wind_speed);
 			$("#peeTextw0").append(showThisWindDesc + " <BR><BR>");
@@ -292,7 +295,7 @@ $(document).ready(function () {
 				$("#peeTextw" + x).append("Daily Avg : " + Math.round(parseInt(response.daily[x].temp.day)) + " °C <BR>");
 				$("#peeTextw" + x).append("Max Tmp : " + Math.round(parseInt(response.daily[x].temp.max)) + " °C <BR><BR>");
 				$("#peeTextw" + x).append("Min Tmp : " + Math.round(parseInt(response.daily[x].temp.min)) + " °C <BR>");
-				$("#peeTextw" + x).append("Forecast : " + response.daily[x].weather[0].description + "<BR>");
+				$("#peeTextw" + x).append("Forecast : " + ucFirstAllWords(response.daily[x].weather[0].description) + "<BR>");
 				$("#peeTextw" + x).append(getWind(response.daily[x].wind_speed) + " <BR>");	
 				$("#peeTextw" + x).append("UV Score : " + response.daily[x].uvi)
 
@@ -309,6 +312,9 @@ $(document).ready(function () {
 			}
 		});
 	}
+
+	// based on name of the city provided, a search result is sent to the API with a 
+	// bunch of results fetched as the answer.
 
 	function getGeoLocal(searchHere) {
 
