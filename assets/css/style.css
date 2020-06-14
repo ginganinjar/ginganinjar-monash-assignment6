@@ -124,20 +124,20 @@ white-space: nowrap;
 
 @keyframes animatedBackgroundSun {
   from {
-    background-position: -300% 0;
+    background-position: -1025px -300px;
   }
   to {
-    background-position: 300% 0;
+    background-position: 1000px -300px;
   }
 }
 .sunshine {
 
   background-image: url(../imgs/sun.png);
-  background-position: -250px 0px;
+  background-position: 0 0;
   background-repeat: NO-REPEAT;
   animation-direction: normal;
   animation: animatedBackgroundSun 20s linear infinite;
-  background-size: 75% 50%;
+  background-size: 850px 850px;
 }
 
 
