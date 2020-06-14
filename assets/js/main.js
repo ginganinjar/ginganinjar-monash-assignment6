@@ -1,19 +1,13 @@
 var response;
 var sendRequest;
-
+var latitude;
+var longitude;
 
 $(document).ready(function () {
 
 // check the go locals. see if we have any.backgroundColors
 
-navigator.geolocation.getCurrentPosition(function(position) {
-    let lat = position.coords.latitude;
-    let long = position.coords.longitude;
 
-    console.log(lat.toFixed(2)); // lat
-   	console.log (long.toFixed(2));
-
-  });
 
 
 	// create function for rountine class/div cleanup
@@ -403,6 +397,23 @@ navigator.geolocation.getCurrentPosition(function(position) {
 		cleanUp();
 		accessStorage("load", null);
 	})
+
+
+	// added routine to display users location upon opening page.background
+
+	if('geolocation' in navigator) {
+		navigator.geolocation.getCurrentPosition(function(position) {
+			let latitude = position.coords.latitude;
+			let longitude = position.coords.longitude;
+		
+			console.log(latitude.toFixed(2)); // lat
+			   console.log (longitude.toFixed(2));
+			   $("#CSSLoader").css("display", "block");
+			   getTheResults(latitude, longitude);
+		  });
+		
+		
+		  } 
 
 	$("#searchTitle").on("keypress", function (e) {
 
