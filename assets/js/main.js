@@ -108,7 +108,7 @@ $(document).ready(function () {
 
 				//Update object's "search" field property to avoid duplication.
 
-				results[objIndex].search = dataID;
+				results[objIndex].search = dataID.toUpperCase();
 			} else {
 				results.push({
 					search: dataID.toUpperCase()
@@ -380,6 +380,7 @@ $(document).ready(function () {
 					newListing.on("click", function () {
 						// save this record to storage
 						$("#CSSLoader").css("display", "block");
+						cleanUp();
 						accessStorage("save", this.innerHTML);
 						getGeoLocal(this.innerHTML);
 					})
@@ -394,7 +395,8 @@ $(document).ready(function () {
 	accessStorage("load", null);
 
 	$("#searchTitle").on("click", function () {
-		cleanUp();
+		//cleanUp();
+		$(".list-group-item").remove();
 		accessStorage("load", null);
 	})
 
