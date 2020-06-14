@@ -28,7 +28,6 @@ display : block;
 }
 
 .leanlefticals {
-float:left;
 overflow-x: scroll;
 white-space: nowrap;
 }
@@ -234,11 +233,14 @@ white-space: nowrap;
 
   float: right;
   margin-top: -187px;
+  display: flex;
+    align-self: flex-end;
 }
 
 .niceText {
 font-weight: 600;
 padding : 1%;
+text-align: center;
 
 }
 
@@ -247,9 +249,17 @@ padding : 1%;
   min-height: 400px;
 }
 
+.topBox {
+  border:ridge;
+
+}
+
 .makeRight {
   width: 11rem;
   min-height: 420px;
+  border:ridge;
+  overflow:hidden;
+
   /* padding: 1%; */
 }
 

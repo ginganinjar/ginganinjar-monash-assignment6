@@ -4,8 +4,21 @@ var sendRequest;
 
 $(document).ready(function () {
 
+// check the go locals. see if we have any.backgroundColors
+
+navigator.geolocation.getCurrentPosition(function(position) {
+    let lat = position.coords.latitude;
+    let long = position.coords.longitude;
+
+    console.log(lat.toFixed(2)); // lat
+   	console.log (long.toFixed(2));
+
+  });
+
+
 	// create function for rountine class/div cleanup
 
+	
 	function cleanUp() {
 
 		$("#searchTitle").val("");
@@ -127,7 +140,7 @@ $(document).ready(function () {
 		if (iD > 0) {
 			bodyCard.attr("class", "card infoBox makeRight");		
 		} else {
-			bodyCard.attr("class", "card infoBox");		
+			bodyCard.attr("class", "card infoBox topBox");		
 		}
 
 		$("#" + thisID).append(bodyCard);
@@ -144,12 +157,12 @@ $(document).ready(function () {
 		cardBody.attr("id", "cardBody" + thisID);
 		$("#bodyCard" + thisID).append(cardBody);
 
-		var h5 = $("<h5>")
-		h5.attr("class", "card-title infoBox");
-		h5.attr("id", "cardtitle" + thisID);
-		$("#cardBody" + thisID).append(h5);
+		// var h5 = $("<h5>")
+		// h5.attr("class", "card-title infoBox");
+		// h5.attr("id", "cardtitle" + thisID);
+		// $("#cardBody" + thisID).append(h5);
 
-		var peepee = $("<p>")
+		var peepee = $("<div>")
 		peepee.attr("class", "card-text infoBox");
 		peepee.attr("id", "peeText" + thisID);
 		$("#cardBody" + thisID).append(peepee);
@@ -247,9 +260,11 @@ $(document).ready(function () {
 			theUVIMG.attr("class", "uv");
 			theUVIMG.attr("style", "cursor:pointer;width:200px;height:215px;margin-left:60%;");
 			theUVIMG.attr("title", "View more information relating to UV protection");
-
+			theUVIMG.prop('target', '_blank');	
+			theUVIMG.attr('target', '_blank');
 			theUVIMG.on("click",function(){
-				window.location.href='https://www.uvdaily.com.au/working-outdoors/uv-risk/#:~:text=Exposure%20to%20UV%20radiation%20from,risk%20of%20developing%20skin%20cancer.&text=UV%20%E2%80%93%20thats%20ultraviolet%20radiation%20%E2%80%93%20damage,in%20your%20skin%20over%20time';
+				window.open('https://www.uvdaily.com.au/working-outdoors/uv-risk/#:~:text=Exposure%20to%20UV%20radiation%20from,risk%20of%20developing%20skin%20cancer.&text=UV%20%E2%80%93%20thats%20ultraviolet%20radiation%20%E2%80%93%20damage,in%20your%20skin%20over%20time');
+					
 			})
 
 			$("#cardBodyw0").append(theUVIMG);
