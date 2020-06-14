@@ -131,6 +131,9 @@ $(document).ready(function () {
 	// this routine creates the card file infomration boxes.
 
 	function makeInfoBox(thisID) {
+
+
+
 		var iD = thisID;
 		thisID = "w" + thisID;
 		// create bootstrap cardfile divs
@@ -149,7 +152,10 @@ $(document).ready(function () {
 
 		var cardHeader = $("<div>");
 		cardHeader.attr("class", "card-header niceText infoBox");
-		cardHeader.css("background-color", "#f4976a")
+		cardHeader.css("background-color", "#dbdce0");
+		cardHeader.css("color", "#303c6c");
+		cardHeader.css("font-family", "arial,sans-serif");
+		cardHeader.css("font-size","20px");
 		cardHeader.attr("id", "theTitle" + thisID);
 		$("#bodyCard" + thisID).append(cardHeader);
 
@@ -160,7 +166,7 @@ $(document).ready(function () {
 		$("#bodyCard" + thisID).append(cardBody);
 
 		var peepee = $("<div>")
-		peepee.attr("class", "card-text infoBox");
+		peepee.attr("class", "card-text infoBox makeNextNicer");
 		peepee.attr("id", "peeText" + thisID);
 		$("#cardBody" + thisID).append(peepee);
 	}
@@ -209,6 +215,10 @@ $(document).ready(function () {
 	// variable are provided in order for it to work correctly.
 
 	function getTheResults(lat, long) {
+
+				// if we've got this far, we need to clean up
+				cleanUp();
+
 		console.log("fetching the weather results");
 		var settings = {
 			"url": "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + long + "&units=metric&appid=a4a1ce235661b8ab1818d50cbde9b7a3",
@@ -416,7 +426,9 @@ $(document).ready(function () {
 		
 			console.log(latitude.toFixed(2)); // lat
 			   console.log (longitude.toFixed(2));
+			   cleanUp();
 			   $("#CSSLoader").css("display", "block");
+	
 			   getTheResults(latitude, longitude);
 		  });
 		
