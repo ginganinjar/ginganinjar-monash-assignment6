@@ -254,7 +254,7 @@ padding : 1%;
 
 @media screen and (max-width: 450px) {
   .makeRight {
-  width: 150px;
+  width: 155px;
   }
   .uv {
     visibility: hidden;

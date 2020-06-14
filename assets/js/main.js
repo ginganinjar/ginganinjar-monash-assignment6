@@ -99,7 +99,7 @@ $(document).ready(function () {
 
 			
 
-				//Update object's theText property to avoid duplication.
+				//Update object's "search" field property to avoid duplication.
 
 				results[objIndex].search = dataID;
 			} else {
