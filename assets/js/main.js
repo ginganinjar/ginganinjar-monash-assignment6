@@ -281,8 +281,8 @@ $(document).ready(function () {
 				$("#theTitlew" + (x)).text(thisTime(response.daily[x].dt));
 
 				$("#peeTextw" + x).append("Daily Avg : " + Math.round(parseInt(response.daily[x].temp.day)) + " °C <BR>");
-				$("#peeTextw" + x).append("Max Temp : " + Math.round(parseInt(response.daily[x].temp.max)) + " °C <BR><BR>");
-				$("#peeTextw" + x).append("Min Temp : " + Math.round(parseInt(response.daily[x].temp.min)) + " °C <BR>");
+				$("#peeTextw" + x).append("Max Tmp : " + Math.round(parseInt(response.daily[x].temp.max)) + " °C <BR><BR>");
+				$("#peeTextw" + x).append("Min Tmp : " + Math.round(parseInt(response.daily[x].temp.min)) + " °C <BR>");
 				$("#peeTextw" + x).append("Forecast : " + response.daily[x].weather[0].description + "<BR>");
 				$("#peeTextw" + x).append(getWind(response.daily[x].wind_speed) + " <BR>");	
 				$("#peeTextw" + x).append("UV Score : " + response.daily[x].uvi)
