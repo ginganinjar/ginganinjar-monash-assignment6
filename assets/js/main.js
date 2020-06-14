@@ -84,12 +84,20 @@ $(document).ready(function () {
 
 		if (toDo === "save") {
 
+		
+			// count the number of objects
+			console.log("length of objects" + results.length);
+			// keep the length to a reasonable number.
+			if (results.length > 8) {results.shift();}
+		
 			// get object array of matches to the existing search
 			objIndex = results.findIndex((obj => obj.search == dataID.toUpperCase()));
 
 			if (objIndex !== -1) {
 				//Log object to Console.
 				console.log("Before update: ", results[objIndex])
+
+			
 
 				//Update object's theText property to avoid duplication.
 
