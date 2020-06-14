@@ -161,7 +161,7 @@ $(document).ready(function () {
 
 		var cardBody = $("<div>");
 		cardBody.attr("class", "card-body infoBox");
-		cardBody.attr("style", "min-height: 220px;padding-left:2%;")
+		// cardBody.attr("style", "min-height: 220px;padding-left:2%;")
 		cardBody.attr("id", "cardBody" + thisID);
 		$("#bodyCard" + thisID).append(cardBody);
 
@@ -316,7 +316,7 @@ $(document).ready(function () {
 					$addImg.attr("css","float:right");
 					$("#theTitlew" + (x)).append($addImg);	
 
-				searchThis("#bodyCardw" + x, response.daily[x].weather[0].main);
+			//	searchThis("#bodyCardw" + x, response.daily[x].weather[0].main);
 				console.log(workedTime);
 
 			}
@@ -417,23 +417,6 @@ $(document).ready(function () {
 	})
 
 
-	// added routine to display users location upon opening page.background
-
-	if('geolocation' in navigator) {
-		navigator.geolocation.getCurrentPosition(function(position) {
-			let latitude = position.coords.latitude;
-			let longitude = position.coords.longitude;
-		
-			console.log(latitude.toFixed(2)); // lat
-			   console.log (longitude.toFixed(2));
-			   cleanUp();
-			   $("#CSSLoader").css("display", "block");
-	
-			   getTheResults(latitude, longitude);
-		  });
-		
-		
-		  } 
 
 	$("#searchTitle").on("keypress", function (e) {
 
