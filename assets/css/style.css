@@ -267,7 +267,8 @@ text-align: center;
   min-height: 420px;
   border:ridge;
   overflow:hidden;
-
+  padding:2%;
+  
   /* padding: 1%; */
 }
 
