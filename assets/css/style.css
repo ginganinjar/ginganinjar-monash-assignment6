@@ -198,6 +198,13 @@ white-space: nowrap;
 .infoBox {
 }
 
+
+.topBoxInfo {
+  max-width: 1054px;
+
+
+}
+
 .zeroMargin {
   margin-left : 0;
   margin-right : 0;
@@ -268,7 +275,7 @@ text-align: center;
   border:ridge;
   overflow:hidden;
   padding:2%;
-  
+
   /* padding: 1%; */
 }
 

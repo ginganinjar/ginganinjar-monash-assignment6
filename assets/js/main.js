@@ -143,9 +143,9 @@ $(document).ready(function () {
 		// info boxes below need a smaller size to display correctly
 		// also want to make media query for mobile screen.
 		if (iD > 0) {
-			bodyCard.attr("class", "card infoBox makeRight");		
+			bodyCard.attr("class", "card infoBox makeRight topBoxInfo");		
 		} else {
-			bodyCard.attr("class", "card infoBox topBox");		
+			bodyCard.attr("class", "card infoBox topBox topBoxInfo");		
 		}
 
 		$("#" + thisID).append(bodyCard);
@@ -249,6 +249,8 @@ $(document).ready(function () {
 			$("#peeTextw0").append("Feels Like : " + Math.round(parseInt(response.current.feels_like)) + " °C <BR>");
 			$("#peeTextw0").append("Humidity : " + response.current.humidity + " <BR>");
 			$("#peeTextw0").append("Description : " + ucFirstAllWords(response.current.weather[0].description) + " <BR>");
+
+
 			
 			var showThisWindDesc = getWind(response.current.wind_speed);
 			$("#peeTextw0").append(showThisWindDesc + " <BR><BR>");
